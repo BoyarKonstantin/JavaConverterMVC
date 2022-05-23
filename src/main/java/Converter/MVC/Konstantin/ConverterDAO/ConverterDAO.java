@@ -1,10 +1,11 @@
 package Converter.MVC.Konstantin.ConverterDAO;
 
+import Converter.MVC.Konstantin.models.ValuteModel;
 import org.springframework.stereotype.Component;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class ConverterDAO {
@@ -29,6 +30,31 @@ public class ConverterDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    /*Создаем публичный метод индекс в который пихаем логику итерации
+    по всем по объектам БД а также добавление говна в твою БД, которую обмазываем
+    исключением потому что так надо*/
+    public List<ValuteModel> index() {
+        List<ValuteModel> valuteModelList = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            String SQL = "SELECT * From converter";
+            statement.executeQuery(SQL);
+            ResultSet resultSet = statement.executeQuery(SQL);
+            while (resultSet.next()) {
+                ValuteModel valuteModel = new ValuteModel();
+
+                valuteModel.setValuteName(resultSet.getString("valutename"));
+                valuteModel.setCourse(resultSet.getDouble("valutecourse"));
+                valuteModel.setCurrentDate(resultSet.getDate("datecourse"));
+                valuteModelList.add(valuteModel);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return valuteModelList;
     }
 
 }

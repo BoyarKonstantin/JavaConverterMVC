@@ -1,11 +1,12 @@
 package Converter.MVC.Konstantin.models;
 
+import java.util.Date;
+
 public class ValuteModel {
     private double course;
     private String valuteName;
 
-    private String urlCourse;
-
+    private Date currentDate;
     public double getCourse() {
         return course;
     }
@@ -22,11 +23,12 @@ public class ValuteModel {
         this.valuteName = valuteName;
     }
 
-    public String getUrlCourse() {
-        return urlCourse;
+
+    public Date getCurrentDate() {
+        return currentDate;
     }
 
-    public void setUrlCourse(String urlCourse) {
-        this.urlCourse = urlCourse;
+    public void setCurrentDate(Date currentDate) {
+        this.currentDate = currentDate;
     }
 }
