@@ -7,16 +7,23 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class CourseDollar implements CourseImplement {
+public class CourseDollar extends CourseAbstract implements CourseImplement {
 
+
+    public void courseVision(){
+        init(url);
+        System.out.println(course);
+    }
     @Override
     public double getCourse(String url) throws IOException {
 
         Document doc = Jsoup.connect(url).get();
-        Elements courses = doc.selectXpath("/html/body/main/div[2]/div/div[1]/div/section[2]/div/table/tbody/tr[1]/td[2]");
-        for(Element course : courses){
-            course.hasText();
-        }
-        return 0;
+
+        Elements tables = doc.getElementsByTag("tbody");
+        Element table = tables.get(0);
+        Elements dollar_elements = table.children();
+        String[] dollar = dollar_elements.get(0).text().replace("USD", "").split(" ");
+        double course = Double.parseDouble(dollar[1]);
+        return course;
     }
 }
