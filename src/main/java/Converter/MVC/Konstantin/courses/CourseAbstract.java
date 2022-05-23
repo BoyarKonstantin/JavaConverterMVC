@@ -7,12 +7,14 @@ public abstract class CourseAbstract implements CourseImplement {
     private Thread secondThread;
     private Runnable runnable;
 
-    /*Класс создания нового потока для запуска парсинга курса*/
-    public void courseVision(){}
-    protected void init(String url){
-        runnable = new Runnable(){
+    /*Метод создания нового потока для запуска парсинга курса*/
+    public void courseVision() {
+    }
+
+    protected void init(String url) {
+        runnable = new Runnable() {
             @Override
-            public void run(){
+            public void run() {
                 try {
                     getCourse(url);
                 } catch (IOException e) {
@@ -25,8 +27,8 @@ public abstract class CourseAbstract implements CourseImplement {
         secondThread.start();
     }
 
-    /*Класс который должен вытягивать данные курса и возвращать их*/
-    public double getCourse(String url) throws IOException{
+    /*Метод который должен вытягивать данные курса и возвращать их*/
+    public double getCourse(String url) throws IOException {
         return course;
     }
 
