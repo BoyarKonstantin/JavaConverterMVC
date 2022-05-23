@@ -45,6 +45,7 @@ public class ConverterDAO {
             while (resultSet.next()) {
                 ValuteModel valuteModel = new ValuteModel();
 
+                valuteModel.setId(resultSet.getInt("id"));
                 valuteModel.setValuteName(resultSet.getString("valutename"));
                 valuteModel.setCourse(resultSet.getDouble("valutecourse"));
                 valuteModel.setCurrentDate(resultSet.getDate("datecourse"));
@@ -55,6 +56,31 @@ public class ConverterDAO {
         }
 
         return valuteModelList;
+    }
+
+    /*Просто метод которій віводит БД на страницу
+     что бі я понимал что ето говно работает*/
+    public ValuteModel show(int id){
+
+        ValuteModel valuteModel = null;
+        try {
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("SELECT * FROM converter WHERE id = ?");
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            valuteModel = new ValuteModel();
+
+            valuteModel.setId(resultSet.getInt("id"));
+            valuteModel.setCurrentDate(resultSet.getDate("datecourse"));
+            valuteModel.setValuteName(resultSet.getString("valutename"));
+            valuteModel.setCourse(resultSet.getDouble("valutecourse"));
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return valuteModel;
     }
 
 }
