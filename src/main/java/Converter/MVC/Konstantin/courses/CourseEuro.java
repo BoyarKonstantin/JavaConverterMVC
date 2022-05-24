@@ -7,11 +7,10 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class CourseEuro extends CourseAbstract implements CourseImplement {
+public class CourseEuro implements CourseImplement {
 
     public void courseVision() {
         init(url);
-        System.out.println(course);
     }
 
     public double getCourse(String url) throws IOException {

@@ -1,5 +1,6 @@
 package Converter.MVC.Konstantin.courses;
 
+import Converter.MVC.Konstantin.models.ValuteModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -7,12 +8,17 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class CourseDollar extends CourseAbstract implements CourseImplement {
+public class CourseDollar implements CourseImplement {
 
 
     public void courseVision() {
         init(url);
-        System.out.println(course);
+        ValuteModel valuteModel = new ValuteModel();
+        try {
+            valuteModel.setCourse(getCourse(url));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

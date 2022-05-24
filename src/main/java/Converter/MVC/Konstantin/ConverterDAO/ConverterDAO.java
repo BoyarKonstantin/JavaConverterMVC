@@ -1,22 +1,26 @@
 package Converter.MVC.Konstantin.ConverterDAO;
 
+import Converter.MVC.Konstantin.courses.CourseImplement;
+import Converter.MVC.Konstantin.courses.CourseMap;
 import Converter.MVC.Konstantin.models.ValuteModel;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
 public class ConverterDAO {
     private static String valuteName;
-
     private static final String URL = "jdbc:postgresql://localhost:5432/Converter";
 
     private static final String USERNAME = "postgres";
 
     private static final String PASSWORD = "Dod900ls";
 
+    Date date = new Date();
     private static Connection connection;
 
     static {
@@ -32,10 +36,8 @@ public class ConverterDAO {
         }
     }
 
-    /*Создаем публичный метод индекс в который пихаем логику итерации
-    по всем по объектам БД а также добавление говна в твою БД, которую обмазываем
-    исключением потому что так надо*/
-    public List<ValuteModel> index() {
+
+    public static List<ValuteModel> index() {
         List<ValuteModel> valuteModelList = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
@@ -58,8 +60,7 @@ public class ConverterDAO {
         return valuteModelList;
     }
 
-    /*Просто метод которій віводит БД на страницу
-     что бі я понимал что ето говно работает*/
+
     public ValuteModel show(int id){
 
         ValuteModel valuteModel = null;
@@ -82,5 +83,20 @@ public class ConverterDAO {
         }
         return valuteModel;
     }
+    public void addCourse(int id, ValuteModel valuteModel){
+        CourseMap courseMap = new CourseMap();
+        try {
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("INSERT INTO converter VALUES(1, ?, ?, ?)");
+            preparedStatement.setDate(1, java.sql.Date.valueOf(date.toString()));
+            preparedStatement.setString(2, valuteModel.getValuteName());
+            preparedStatement
+                    .setDouble(3, valuteModel
+                    .setCourse(courseMap
+                    .getCourse(CourseImplement.url)));
 
+        } catch (SQLException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

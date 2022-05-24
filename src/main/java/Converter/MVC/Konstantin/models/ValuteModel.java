@@ -3,6 +3,8 @@ package Converter.MVC.Konstantin.models;
 import java.util.Date;
 
 public class ValuteModel {
+
+    private int id;
     private double course;
     private String valuteName;
 
@@ -11,8 +13,9 @@ public class ValuteModel {
         return course;
     }
 
-    public void setCourse(double course) {
+    public double setCourse(double course) {
         this.course = course;
+        return course;
     }
 
     public String getValuteName() {
@@ -30,5 +33,13 @@ public class ValuteModel {
 
     public void setCurrentDate(Date currentDate) {
         this.currentDate = currentDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
