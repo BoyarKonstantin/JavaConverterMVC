@@ -15,7 +15,7 @@ public class CourseMap implements CourseImplement{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return courseMap();
+        return course;
     }
 
     @Override
