@@ -61,7 +61,7 @@ public class ConverterDAO {
     }
 
 
-    public ValuteModel show(int id){
+    public ValuteModel show(int id) {
 
         ValuteModel valuteModel = null;
         try {
@@ -83,7 +83,8 @@ public class ConverterDAO {
         }
         return valuteModel;
     }
-    public void addCourse(int id, ValuteModel valuteModel){
+
+    public void addCourse(int id, ValuteModel valuteModel) {
         CourseMap courseMap = new CourseMap();
         try {
             PreparedStatement preparedStatement = connection
@@ -92,8 +93,8 @@ public class ConverterDAO {
             preparedStatement.setString(2, valuteModel.getValuteName());
             preparedStatement
                     .setDouble(3, valuteModel
-                    .setCourse(courseMap
-                    .getCourse(CourseImplement.url)));
+                            .setCourse(courseMap
+                                    .getCourse(CourseImplement.url)));
 
         } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
