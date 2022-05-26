@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class ValuteModel {
 
-    private int id;
+    private static int id;
     private double course;
     private String valuteName;
 
@@ -35,7 +35,7 @@ public class ValuteModel {
         this.currentDate = currentDate;
     }
 
-    public int getId() {
+    public static int getId() {
         return id;
     }
 

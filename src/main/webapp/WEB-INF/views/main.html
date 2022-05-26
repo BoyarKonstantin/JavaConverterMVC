@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="valute : ${converter}">
+    <h1 th:text = "${valute.getId()}"></h1>
+    <h2 th:text="${valute.getValuteName()}"></h2>
+    <br/>
+    <h2 th:text="${valute.getCourse()}"></h2>
+    <br/>
+    <hr/>
+</div>
+    <br/>
+</body>
+</html>

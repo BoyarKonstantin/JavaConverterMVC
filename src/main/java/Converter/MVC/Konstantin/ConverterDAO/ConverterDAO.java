@@ -61,7 +61,7 @@ public class ConverterDAO {
     }
 
 
-    public ValuteModel show(int id) {
+    public static ValuteModel show(int id) {
 
         ValuteModel valuteModel = null;
         try {

@@ -28,8 +28,10 @@ public class CourseDollar implements CourseImplement {
 
         Elements tables = doc.getElementsByTag("tbody");
         Element table = tables.get(0);
+
         Elements dollar_elements = table.children();
         String[] dollar = dollar_elements.get(0).text().replace("USD", "").split(" ");
+
         double course = Double.parseDouble(dollar[1]);
         return course;
     }
