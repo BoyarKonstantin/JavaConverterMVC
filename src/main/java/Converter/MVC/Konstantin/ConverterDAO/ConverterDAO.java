@@ -84,19 +84,15 @@ public class ConverterDAO {
         return valuteModel;
     }
 
-    public void addCourse(int id, ValuteModel valuteModel) {
-        CourseMap courseMap = new CourseMap();
+    public void addCourse(int id, ValuteModel valuteModel, String valuteName) {
         try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("INSERT INTO converter VALUES(1, ?, ?, ?)");
             preparedStatement.setDate(1, java.sql.Date.valueOf(date.toString()));
             preparedStatement.setString(2, valuteModel.getValuteName());
-            preparedStatement
-                    .setDouble(3, valuteModel
-                            .setCourse(courseMap
-                                    .getCourse(CourseImplement.url)));
+            preparedStatement.setDouble(3, valuteModel.getCourse(valuteName));
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

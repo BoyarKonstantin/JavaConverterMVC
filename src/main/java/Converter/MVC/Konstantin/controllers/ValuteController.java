@@ -31,9 +31,10 @@ public class ValuteController {
     }
 
     @PostMapping()
-    public String addActualCourse(@ModelAttribute("converter") ValuteModel valuteModel) {
+    public String addActualCourse(@ModelAttribute("converter") ValuteModel valuteModel,
+                                  @ModelAttribute("valuteName") String valuteName) {
 
-        converterDAO.addCourse(++ID, valuteModel);
+        converterDAO.addCourse(++ID, valuteModel, valuteName);
         return "redirect:/converter";
 
     }
