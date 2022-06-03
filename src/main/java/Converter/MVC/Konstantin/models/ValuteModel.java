@@ -1,5 +1,7 @@
 package Converter.MVC.Konstantin.models;
 
+import Converter.MVC.Konstantin.courses.CourseMap;
+
 import java.util.Date;
 
 public class ValuteModel {
@@ -9,8 +11,11 @@ public class ValuteModel {
     private String valuteName;
 
     private Date currentDate;
-    public double getCourse() {
-        return course;
+
+    public double getCourse(String valuteName) {
+
+        CourseMap courseMap = new CourseMap();
+        return CourseMap.courseMap(valuteName);
     }
 
     public double setCourse(double course) {

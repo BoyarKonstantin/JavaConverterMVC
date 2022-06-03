@@ -12,23 +12,27 @@ import org.springframework.web.bind.annotation.*;
 public class ValuteController {
     private static int ID;
     private final ConverterDAO converterDAO;
+
     @Autowired
     public ValuteController(ConverterDAO converterDAO) {
         this.converterDAO = converterDAO;
     }
 
     @GetMapping
-    public String index(Model model){
+    public String index(Model model) {
         model.addAttribute("converter", ConverterDAO.index());
         return "main";
     }
+
     @GetMapping("/addcourse")
-    public String addCourseToSite(Model model){
+    public String addCourseToSite(Model model) {
         model.addAttribute("converter", new ValuteModel());
         return "getCourse";
     }
+
     @PostMapping()
-    public String addActualCourse( @ModelAttribute("converter") ValuteModel valuteModel){
+    public String addActualCourse(@ModelAttribute("converter") ValuteModel valuteModel) {
+
         converterDAO.addCourse(++ID, valuteModel);
         return "redirect:/converter";
 
